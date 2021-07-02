@@ -84,6 +84,9 @@
    <property name="locale">
     <locale language="English" country="UnitedStates"/>
    </property>
+   <property name="placeholderText">
+    <string>AMZN</string>
+   </property>
   </widget>
   <widget class="QPushButton" name="advance_setting_button">
    <property name="geometry">
@@ -138,9 +141,12 @@
      <pointsize>14</pointsize>
     </font>
    </property>
+   <property name="currentText">
+    <string> 1 min</string>
+   </property>
    <item>
     <property name="text">
-     <string>1 min</string>
+     <string> 1 min</string>
     </property>
    </item>
    <item>
@@ -164,7 +170,7 @@
     <rect>
      <x>640</x>
      <y>580</y>
-     <width>241</width>
+     <width>101</width>
      <height>41</height>
     </rect>
    </property>
@@ -176,6 +182,9 @@
    </property>
    <property name="locale">
     <locale language="English" country="UnitedStates"/>
+   </property>
+   <property name="placeholderText">
+    <string>3</string>
    </property>
   </widget>
   <widget class="QLabel" name="window_size_label">
@@ -208,7 +217,7 @@
     <rect>
      <x>640</x>
      <y>640</y>
-     <width>241</width>
+     <width>101</width>
      <height>41</height>
     </rect>
    </property>
@@ -220,6 +229,9 @@
    </property>
    <property name="locale">
     <locale language="English" country="UnitedStates"/>
+   </property>
+   <property name="placeholderText">
+    <string>50</string>
    </property>
   </widget>
   <widget class="QLabel" name="iiteration_times_label">
@@ -250,8 +262,8 @@
   <widget class="QGraphicsView" name="graphicsView">
    <property name="geometry">
     <rect>
-     <x>50</x>
-     <y>20</y>
+     <x>40</x>
+     <y>40</y>
      <width>1100</width>
      <height>500</height>
     </rect>
