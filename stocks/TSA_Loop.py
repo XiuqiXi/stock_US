@@ -1,7 +1,7 @@
+
 # -*- coding: utf-8 -*-
 """
 Created on Sun Jun 27 16:08:03 2021
-
 @author: xixiu
 """
 
@@ -29,7 +29,7 @@ config = {
     "alpha_vantage": {
         "function":"TIME_SERIES_INTRADAY",
         "key": "PR3XLLYLAN8V9CBY", # Claim your free API key here: https://www.alphavantage.co/support/#api-key
-        "symbol": "TCEHY",
+        "symbol": "TSLA",
         "outputsize": "full",
         "interval": "5min",
         "key_close": "4. close",
@@ -39,7 +39,7 @@ config = {
         "train_split_size": 0.80,
     },
     "plots": {
-        "xticks_interval": 250, # show a date every 90 days
+        "xticks_interval": 10, # show a date every 90 days
         "color_actual": "#001f3f",
         "color_train": "#3D9970",
         "color_val": "#0074D9",
@@ -56,7 +56,7 @@ config = {
     "training": {
         "device": "cpu", # "cuda" or "cpu"
         "batch_size": 64,
-        "num_epoch": 50,
+        "num_epoch": 100,
         "learning_rate": 0.01,
         "scheduler_step_size": 40,
     }
@@ -127,16 +127,4 @@ def tSA_loop(config):
 
     prediction = prediction[0:int(0.3*len(prediction))]
 
-    fig3, ax3 = plt.subplots(figsize=(1110/80, 500/80), dpi=80)
-    ax3.plot(data_date, data_close_price, label = 'Regression price', color=config["plots"]["color_actual"])
-    ax3.plot([i + len(closing) for i in range(len(prediction))], prediction, color = 'y', label = 'Predictions')
-    xticks = [data_date[i] if ((i%config["plots"]["xticks_interval"]==0 and (num_data_points-i) > config["plots"]["xticks_interval"]) or i==num_data_points-1) else None for i in range(num_data_points)] # make x ticks nice
-    x = np.arange(0,len(xticks))
-    plt.xticks(x, xticks, rotation=30)
-    plt.title(config["alpha_vantage"]["symbol"])
-    ax3.legend(loc='upper left')
-    ax3.set_xlabel('Time point')
-    ax3.set_ylabel('Price')
-    ax3.axvline(x=len(closing), color='r', linestyle='--')
-
-    return fig3
+    return data_date, data_close_price, prediction, num_data_points
