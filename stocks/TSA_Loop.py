@@ -128,3 +128,5 @@ def tSA_loop(config):
     prediction = prediction[0:int(0.3*len(prediction))]
 
     return data_date, data_close_price, prediction, num_data_points
+
+data_date, data_close_price, prediction, num_data_points= tSA_loop(config)

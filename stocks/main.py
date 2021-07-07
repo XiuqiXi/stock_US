@@ -102,7 +102,7 @@ class MyMainForm(QMainWindow, Ui_Main):
         self.show()
 
     def show_message(self):
-        QtWidgets.QMessageBox.critical(self, "Error", self.config["alpha_vantage"]["symbol"], QtWidgets.QMessageBox.Ok)
+        QMessageBox.critical(self, "Error", self.config["alpha_vantage"]["symbol"], QMessageBox.Ok)
 
     def comboBoxeActivated(self, index):
         interval = str(self.comboBox.itemText(index))
@@ -122,6 +122,7 @@ class MyMainForm(QMainWindow, Ui_Main):
             self.config["data"]["window_size"] = self.window_size_text.toPlainText()
             self.config["training"]["num_epoch"] = self.iteration_times_text.toPlainText()
             data_date, data_close_price, prediction, num_data_points= tSA_loop(self.config)
+            print(type(data_date[30]))
             current_date = data_date[-1]
             current_price = data_close_price[-1]
             prediction_data_date = prediction_date(data_date, len(prediction), self.config["alpha_vantage"]["interval"])
@@ -130,7 +131,9 @@ class MyMainForm(QMainWindow, Ui_Main):
             data_date = data_date+prediction_data_date
             number_point_prediction_child = len(prediction)
             num_data_points = num_data_points+len(prediction)
+
         except:
+            prediction_data_date = prediction_date(data_date, len(prediction), self.config["alpha_vantage"]["interval"])
             self.show_message()
         else:
             pg.setConfigOptions(antialias=True)

@@ -47,7 +47,9 @@ config = {
     }
 }
 
-data_date, data_close_price, num_data_points, display_date_range = download_data(config)
+# data_date, data_close_price, num_data_points, display_date_range = download_data(config)
+from TSA_Loop import tSA_loop
+data_date, data_close_price, prediction, num_data_points= tSA_loop(config)
 
 def timestamp_to_date(time_stamp, format_string="%Y-%m-%d %H:%M:%S"):
     time_array = time.localtime(time_stamp)
@@ -55,24 +57,24 @@ def timestamp_to_date(time_stamp, format_string="%Y-%m-%d %H:%M:%S"):
     return str_date
 
 def prediction_date(data_date, cutoff, interval):
-    date = data_date
-    date_day = []
-    date_second = []
-    for i in range(len(data_date)):
-        date[i] = data_date[i].split(' ', 1)
-        date_second.append(date[i][1])
-        if i == 0:
-            pass
-        else:
-            if date[i][1] == date[0][1]:
-                break
-    del date_second[-1]
+    # date = data_date
+    # date_day = []
+    # date_second = []
+    # for i in range(len(data_date)):
+    #     print(i)
+    #     print(type(data_date[i]))
+    #     print(data_date[i])
+    #     date[i] = data_date[i].split(' ', 1)
+    #     date_second.append(date[i][1])
+    #     if i != 0 and date[i][1] == date[0][1]:
+    #         break
+    # del date_second[-1]
     
-    opening_time = datetime.datetime.strptime(date_second[0], '%H:%M:%S')
-    closing_time = datetime.datetime.strptime(date_second[-1], '%H:%M:%S')
+    # opening_time = datetime.datetime.strptime(date_second[0], '%H:%M:%S')
+    # closing_time = datetime.datetime.strptime(date_second[-1], '%H:%M:%S')
     
-    current_date = data_date[-1].split(' ', 1)[0]
-    current_second = date[i] = data_date[-1].split(' ', 1)[1]
+    # current_date = data_date[-1].split(' ', 1)[0]
+    # current_second = date[i] = data_date[-1].split(' ', 1)[1]
     
     points = 10000
     
@@ -119,12 +121,3 @@ def prediction_date(data_date, cutoff, interval):
         prediction_date[i] = datetime.datetime.strftime(prediction_date[i],'%Y-%m-%d %H:%M:%S')
     
     return prediction_date
-
-A = prediction_date(data_date, 300, config["alpha_vantage"]["interval"])
-
-
-    
-
-
-    
-    
