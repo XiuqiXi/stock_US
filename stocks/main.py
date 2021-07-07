@@ -208,7 +208,7 @@ class Trade_Window(QMainWindow,Ui_trade_window):
         super(Trade_Window, self).__init__()
         self.setupUi(self)
         self.buy_button.clicked.connect(self.msg1_buy)
-        self.buy_button.clicked.connect(self.msg1_sell)
+        self.sell_button.clicked.connect(self.msg1_sell)
         self.label_current_time.setText(current_date)
         self.label_current_price.setText(str(current_price))
 
@@ -225,6 +225,14 @@ class Trade_Window(QMainWindow,Ui_trade_window):
         global current_date
         shares = self.TextEdit_share.toPlainText()
         QMessageBox.information(self,"Are you sure?","Are you sure to sell "+ shares + " shares at " + str(current_date),QMessageBox.Yes|QMessageBox.No,QMessageBox.Yes)
+
+    def mousePressEvent(self, evt):
+        self.Point_list = []
+        len_point_list = len(self.Point_list)/2
+        for i in range(int(len_point_list)):
+            painter.drawPoint(self.Point_list[i*2],self.Point_list[i*2+1])
+            print("DrawPoint")
+        print('AAAAA')
 
     def OPEN(self):
         self.show()
