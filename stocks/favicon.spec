@@ -4,7 +4,7 @@
 block_cipher = None
 
 
-a = Analysis(['main.py'],
+a = Analysis(['favicon.ico', 'main.py'],
              pathex=['D:\\Document\\stock_US\\stocks'],
              binaries=[],
              datas=[],
@@ -24,7 +24,7 @@ exe = EXE(pyz,
           a.zipfiles,
           a.datas,
           [],
-          name='main',
+          name='favicon',
           debug=False,
           bootloader_ignore_signals=False,
           strip=False,
