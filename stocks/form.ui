@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1191</width>
-    <height>713</height>
+    <width>1189</width>
+    <height>712</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -64,7 +64,7 @@
      </widget>
     </item>
     <item>
-     <widget class="QPushButton" name="trade_button">
+     <widget class="QPushButton" name="Compute_button_feedback">
       <property name="font">
        <font>
         <family>Arial</family>
@@ -72,7 +72,7 @@
        </font>
       </property>
       <property name="text">
-       <string>Trade</string>
+       <string>Feedback</string>
       </property>
      </widget>
     </item>
@@ -294,6 +294,25 @@
      </widget>
     </item>
    </layout>
+  </widget>
+  <widget class="QPushButton" name="trade_button">
+   <property name="geometry">
+    <rect>
+     <x>960</x>
+     <y>740</y>
+     <width>184</width>
+     <height>35</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Trade</string>
+   </property>
   </widget>
  </widget>
  <resources/>

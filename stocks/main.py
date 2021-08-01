@@ -14,6 +14,10 @@ from Prediction_Date import prediction_date
 from PyQt5.QtWidgets import QPushButton
 from RNN_Loop import rNN_loop
 from TSA_Loop import tSA_loop
+import os
+import qdarkstyle
+
+
 
 def fig2data(fig):
     """
@@ -94,12 +98,16 @@ class MyMainForm(QMainWindow, Ui_Main):
         self.Compute_button.clicked.connect(self.set_graph_ui)
         self.Compute_button_reset.clicked.connect(self.reset_ui)
         self.comboBox.activated.connect(self.comboBoxeActivated)
+        self.Compute_button_feedback.clicked.connect(self.show_feedback)
         self.setWindowTitle('US Stocks Predictions')
         self.setWindowIcon(QIcon('favicon.ico'))
         self.stock_code_text.setText("AMZN")
         self.window_size_text.setText("3")
         self.iteration_times_text.setText("50")
         self.show()
+
+    def show_feedback(self):
+        QMessageBox.about(self,"Feedback","Please leave messages to xiuq.xi@outlook.com if you find any issues.")
 
     def show_message(self):
         QMessageBox.critical(self, "Error", self.config["alpha_vantage"]["symbol"], QMessageBox.Ok)
@@ -310,6 +318,7 @@ class Trade_Window(QMainWindow,Ui_trade_window):
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
+    app.setStyleSheet(qdarkstyle.load_stylesheet())
     main = MyMainForm()
     main.show()
     trade = Trade_Window()
